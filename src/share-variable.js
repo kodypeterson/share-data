@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const artifact = require('@actions/artifact');
+const {DefaultArtifactClient} = require('@actions/artifact')
 const fs = require('fs').promises;
 
 // Setup user input
@@ -10,7 +10,7 @@ const key = core.getInput('key');
 const value = core.getInput('value');
 
 // Setup artifact
-const artifactClient = artifact.create();
+const artifactClient = new DefaultArtifactClient()
 const artifactName = share_id;
 const fileName = `share_data_${share_id}.json`;
 const rootDirectory = '.';
