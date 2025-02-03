@@ -46,7 +46,7 @@ async function load() {
     js = JSON.parse(raw);
     await fs.unlink(fileName);
   } catch (error) {
-    //console.log(error);
+    console.log(error);
   }
   return js;
 }
