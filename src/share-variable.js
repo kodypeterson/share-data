@@ -43,11 +43,11 @@ async function load() {
   try {
     let downloadResponse = await artifactClient.downloadArtifact(artifactName);
     let raw = await fs.readFile(fileName);
-    core.debug(raw);
+    console.log(raw);
     js = JSON.parse(raw);
     await fs.unlink(fileName);
   } catch (error) {
-    core.debug(error);
+    console.log(error);
   }
   return js;
 }
