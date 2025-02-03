@@ -41,8 +41,9 @@ async function run() {
 async function load() {
   let js = {};
   try {
-    let downloadResponse = await artifactClient.downloadArtifact(artifactName);
-    let raw = await fs.readFile(fileName);
+    let artifact = await artifactClient.getArtifact(artifactName);
+    let downloadResponse = await artifactClient.downloadArtifact(artifact.artifact.id);
+    let raw = await fs.readFile(downloadResponse.downloadPath);
     console.log(raw);
     js = JSON.parse(raw);
     await fs.unlink(fileName);
